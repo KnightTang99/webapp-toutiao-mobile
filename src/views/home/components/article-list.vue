@@ -1,5 +1,6 @@
 <template>
   <div class="article-list">
+    <!-- 下拉加载 -->
     <van-pull-refresh
       v-model="isLoading"
       @refresh="onRefresh"

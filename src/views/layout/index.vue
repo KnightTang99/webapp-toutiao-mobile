@@ -2,6 +2,7 @@
   <div class="layout-container">
     <router-view></router-view>
     <van-tabbar class="layout-tabbar" route>
+      <!-- 支持路由模式，跳转到指定路由 -->
       <van-tabbar-item to="/">
         <i slot="icon" class="iconfont icon-shouye"></i>
         <span class="bar-text">首页</span>

@@ -104,6 +104,7 @@ export default {
           this.$toast('添加频道失败，请稍后重试')
         }
       } else {
+        this.myChannels.push(channel)
         setItem('USER_CHANNELS', this.myChannels)
       }
     },

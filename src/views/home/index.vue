@@ -1,6 +1,8 @@
 <template>
   <div class="home-container">
     <van-nav-bar class="page-nav-bar" fixed>
+      <!-- 这里的按钮是nav-bar的插槽实现的 slot="title" -->
+      <!-- icon="search" 是按钮的组件 -->
       <van-button
         class="search-btn"
         slot="title"
@@ -12,6 +14,7 @@
         >搜索</van-button
       >
     </van-nav-bar>
+    <!-- swipeable 开启手滑切换 -->
     <van-tabs class="channel-tabs" swipeable animated v-model="active">
       <van-tab
         v-for="channel in channelList"
@@ -20,13 +23,13 @@
       >
         <article-list :channel="channel"></article-list>
       </van-tab>
-
+      <!-- placeholder 占位符的作用,将列表挤出来,显示全部内容 -->
       <div slot="nav-right" class="placeholder"></div>
       <div slot="nav-right" class="hamburger" @click="isEditShow = true">
         <i class="iconfont icon-gengduo"></i>
       </div>
     </van-tabs>
-    <!-- 弹框 -->
+    <!-- 面包按钮弹框 -->
     <van-popup
       close-icon-position="top-left"
       v-model="isEditShow"
@@ -43,8 +46,10 @@
   </div>
 </template>
 <script>
+// 加载列表和编辑组件
 import ArticleList from './components/article-list.vue'
 import ArticleEdit from './components/articleEdit'
+// 获取频道的接口
 import { getChannelList } from '@/api/user.js'
 import { mapState } from 'vuex'
 import { getItem, setItem } from '@/utiles/storage'
@@ -70,7 +75,7 @@ export default {
   mounted() {},
   methods: {
     async loadChannelList() {
-      let channels = []
+      let channels = [] // 是为了根据是否登录,记录不同情况的数据
       if (this.user) {
         try {
           const { data } = await getChannelList()
@@ -83,6 +88,7 @@ export default {
         if (localChannels) {
           channels = localChannels
         } else {
+          // 未登录且本地没有数据,就还是请求数据
           const { data } = await getChannelList()
           channels = data.data.channels
           setItem('USER_CHANNELS', channels)

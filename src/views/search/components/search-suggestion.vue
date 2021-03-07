@@ -29,6 +29,7 @@ export default {
   },
   computed: {},
   watch: {
+    // 只要发生改变就会触发
     searchText: {
       // 这里的value就是searchText
       handler: debounce(function(value) {
@@ -51,7 +52,7 @@ export default {
       }
     },
     highLight(str) {
-      const reg = new RegExp(this.searchText, 'gi')
+      const reg = new RegExp(this.searchText, 'gi') // 正则如果要是变量的话,必须经过构造函数,不能直接用字面量,否则会当作正则的条件
       const highLightStr = `<span class="active">${this.searchText}</span>`
       return str.replace(reg, highLightStr)
     }

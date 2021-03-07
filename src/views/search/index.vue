@@ -69,6 +69,7 @@ export default {
         this.historyList.splice(index, 1)
       }
       this.historyList.unshift(val)
+      // 搜索结果组件显示
       this.isResultShow = true
     },
     onCancel() {

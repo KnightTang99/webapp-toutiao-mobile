@@ -32,7 +32,7 @@ const routes = [
     component: () => import('@/views/layout/index.vue'),
     children: [
       {
-        path: '',
+        path: '', // 默认路由，当访问父路由会自动跳转到此路由
         name: 'home',
         component: () => import('@/views/home')
       },
