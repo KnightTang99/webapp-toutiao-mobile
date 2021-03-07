@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import { getItem, setItem } from '@/utiles/storage.js'
 Vue.use(Vuex)
 const TOKEN_KEY = 'TOUTIAO_USER'
+// const SUGGESTION_LIST = 'TOUTIAO_SUGGESTION'
 export default new Vuex.Store({
   state: {
     // user: JSON.parse(window.localStorage.getItem(TOKEN_KEY))

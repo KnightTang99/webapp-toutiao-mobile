@@ -8,3 +8,6 @@ dayjs.extend(relativeTime)
 Vue.filter('relativeTime', dataTime => {
   return dayjs().to(dayjs(dataTime))
 })
+Vue.filter('getStr', str => {
+  return '<span class="active">qqq</span>'
+})

@@ -1,5 +1,14 @@
 <template>
-  <van-cell class="article-item">
+  <!-- to等同于routerLink的to属性 -->
+  <van-cell
+    :to="{
+      name: 'article',
+      params: {
+        articleId: article.art_id
+      }
+    }"
+    class="article-item"
+  >
     <div class="title van-multi-ellipsis--l2" slot="title">
       {{ article.title }}
     </div>
@@ -42,7 +51,11 @@ export default {
   },
   created() {},
   mounted() {},
-  methods: {}
+  methods: {
+    getDetails() {
+      console.log(11)
+    }
+  }
 }
 </script>
 <style lang="less" scoped>

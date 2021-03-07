@@ -8,7 +8,7 @@
         size="small"
         type="info"
         icon="search"
-        to="search"
+        to="/search"
         >搜索</van-button
       >
     </van-nav-bar>
@@ -26,6 +26,7 @@
         <i class="iconfont icon-gengduo"></i>
       </div>
     </van-tabs>
+    <!-- 弹框 -->
     <van-popup
       close-icon-position="top-left"
       v-model="isEditShow"
@@ -46,7 +47,7 @@ import ArticleList from './components/article-list.vue'
 import ArticleEdit from './components/articleEdit'
 import { getChannelList } from '@/api/user.js'
 import { mapState } from 'vuex'
-import { getItem } from '@/utiles/storage'
+import { getItem, setItem } from '@/utiles/storage'
 export default {
   name: 'HomeIndex',
   data() {
@@ -84,6 +85,7 @@ export default {
         } else {
           const { data } = await getChannelList()
           channels = data.data.channels
+          setItem('USER_CHANNELS', channels)
         }
       }
       this.channelList = channels

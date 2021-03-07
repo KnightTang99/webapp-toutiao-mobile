@@ -12,7 +12,19 @@ const routes = [
   {
     path: '/search',
     name: 'search',
-    component: () => import('@/views/search/index')
+    component: () => import('@/views/search/index.vue')
+  },
+  {
+    path: '/article/:articleId',
+    name: 'article',
+    component: () => import('@/views/detail/index.vue'),
+    props: true
+  },
+  {
+    path: '/user/profile',
+    name: 'user-profile',
+    component: () => import('@/views/user-profile/index'),
+    props: true
   },
   {
     path: '/',

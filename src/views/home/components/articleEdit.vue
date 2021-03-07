@@ -19,7 +19,11 @@
         :key="channel.id"
         @click="deleteOrJump(channel, index)"
       >
-        <van-icon v-if="!isEditChange" name="clear" slot="icon" />
+        <van-icon
+          v-if="!isEditChange && index !== 0"
+          name="clear"
+          slot="icon"
+        />
         <div slot="text" class="text" :class="{ active: index === active }">
           {{ channel.name }}
         </div>
@@ -88,13 +92,13 @@ export default {
       }
     },
     async addChannel(channel) {
-      this.myChannels.push(channel)
       if (this.user) {
         try {
           await addUserChannel({
             id: channel.id,
             seq: this.myChannels.length
           })
+          this.myChannels.push(channel)
           this.$toast('添加频道成功')
         } catch (err) {
           this.$toast('添加频道失败，请稍后重试')
